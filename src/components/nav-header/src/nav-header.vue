@@ -4,13 +4,23 @@
         class="fold-menu" 
         :class="isFold ? 'el-icon-s-fold' : 'el-icon-s-unfold'"
         @click="handleFoldClick"></i>
+        <div class="content">
+            <breadcrumb />
+            <user-info />
+        </div>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from "vue"
+import UserInfo from './user-info.vue'
+import Breadcrumb, { IBreadcrumb } from '@/base-ui/breadcrumb'
 export default defineComponent({
     emits:['foldChange'],
+    components:{
+        UserInfo,
+        Breadcrumb
+    },
     setup(props,{ emit }){
         const isFold = ref(false)
         const handleFoldClick = () => {
